@@ -1,0 +1,35 @@
+{
+  "scenario": [
+    {
+      "id": 1,
+      "name": "first Scenario",
+      "time": 9,
+      "vehicles": [
+        {
+          "vehicleId": 1
+        },
+        {
+          "vehicleId": 2
+        }
+      ]
+    }
+  ],
+  "vehicle": [
+    {
+      "name": "Bus",
+      "speed": "9",
+      "initialX": "342",
+      "initialY": "563",
+      "direction": "towards",
+      "id": 1
+    },
+    {
+      "name": "Bike",
+      "speed": "56",
+      "initialX": "267",
+      "initialY": "88",
+      "direction": "backwards",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+.home-container{
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.scenario-chooser{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+select{
+    outline: none;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.btn{
+    padding: 10px;
+    outline: none;
+    border: none;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+.start-simulation{
+    color: rgb(35, 145, 8);
+
+}
+.kill{
+    color: #de0000bd;
+    margin-left: 10px;
+}
+.start-simulation:hover{
+    background-color:  rgb(35, 145, 8);
+    border: none;
+    color: white;
+}
+.kill:hover{
+    color: white;
+    border:none;
+    background-color: #de0000bd;
+}
+
+
+table{
+    width: 100%; 
+}
+
+.table-container{
+    width: 90%;
+}
+thead{
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: #333;
+}
+tbody{
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+th{
+    padding: 20px;
+}
+td{
+    text-align: center;
+    padding: 15px;
+}
+tr{
+    color: #333;
+}
+
+.graph{
+    width: 90%;
+    height: 650px;
+    margin-top: 20px;
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.09);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(7.3px);
+-webkit-backdrop-filter: blur(7.3px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.vehicles{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 45px;
+    border-radius: 50%;
+}

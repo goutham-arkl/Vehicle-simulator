@@ -1,0 +1,38 @@
+.all-scenarios-container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+.header span{
+    width: 200px;
+    font-size: larger;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.buttons-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 120px;
+    gap: 30px;
+}
+
+.buttons-div button{
+    padding: 12px;
+    width: 100px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: medium;
+    cursor: pointer;
+}
