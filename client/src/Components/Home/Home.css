@@ -82,14 +82,13 @@ tr{
 
 .graph{
     width: 90%;
-    height: 650px;
+    height: 550px;
     margin-top: 20px;
     border-radius: 30px;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     overflow: hidden;
-/* From https://css.glass */
 background: rgba(255, 255, 255, 0.09);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -103,8 +102,8 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 45px;
+    height: 50px;
+    width: 55px;
     border-radius: 50%;
 }
 

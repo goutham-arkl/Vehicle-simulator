@@ -2,7 +2,7 @@ import{useContext, useEffect, useState} from 'react'
 import './AllScenarios.css'
 import Swal from 'sweetalert2'
 import {DataContext} from '../../Context/DataContext'
-import axios from 'axios'
+import axios from '../../axios'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -37,12 +37,12 @@ const AllScenarios = () => {
         if (result.isConfirmed) {
           try{
             scenario.map((item)=>{
-              axios.delete(`http://localhost:4000/scenario/${item.id}`)
+              axios.delete(`/scenario/${item.id}`)
               
             })
             
             vehicle.map((item)=>{
-              axios.delete(`http://localhost:4000/vehicle/${item.id}`)
+              axios.delete(`/vehicle/${item.id}`)
               
             })
             setReload(!reload)
@@ -76,7 +76,7 @@ const AllScenarios = () => {
       }).then(async(result) => {
         if (result.isConfirmed) {
           try {
-            axios.delete(`http://localhost:4000/scenario/${id}`).then((res)=>{
+            axios.delete(`/scenario/${id}`).then((res)=>{
               setReload(!reload)
               Swal.fire(
                 'Deleted!',
@@ -95,7 +95,7 @@ const AllScenarios = () => {
     }
 
     const handleModelOpen=(id)=>{
-      axios.get(`http://localhost:4000/scenario/${id}`).then((res)=>{
+      axios.get(`/scenario/${id}`).then((res)=>{
         setModalData(res.data)
         setOpenModal(true)
       })
@@ -120,7 +120,11 @@ const AllScenarios = () => {
           time: time,
         };
           try {
-            const response = await axios.patch(`http://localhost:4000/scenario/${id}`, updatedData);
+            const response = await axios.patch(`/scenario/${id}`, updatedData);
+            Swal.fire(
+              'Edited Succesfully',
+              'success'
+            )
             location.reload()
           } catch (error) {
             console.log(error);
@@ -140,9 +144,12 @@ const AllScenarios = () => {
    try {
 
     const newVehicle={vehicleId:Number(currentVehicle)};
+    console.log(newVehicle)
     currentScenario.vehicles ? currentScenario.vehicles.push(newVehicle):currentScenario.vehicles=[newVehicle]
       const id=Number(currentScenario.id)
-      axios.patch(`http://localhost:4000/scenario/${id}`,currentScenario).then((res)=>{
+      console.log(id)
+      axios.patch(`/scenario/${id}`,currentScenario).then((res)=>{
+        console.log(res.data)
         setReload(!reload)
         Swal.fire(
           'Vehcle Added',

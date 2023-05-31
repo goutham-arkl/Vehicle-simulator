@@ -1,5 +1,5 @@
 import {createContext,useEffect,useState} from 'react'
-import axios from 'axios'
+import axios from '../axios'
 export const DataContext = createContext();
 export const DataContextProvider =({children})=>{
     const [vehicle,setVehicle]=useState([])
@@ -14,9 +14,9 @@ export const DataContextProvider =({children})=>{
         
           try {
         
-            const response = await axios.get('http://localhost:4000/scenario');
+            const response = await axios.get('/scenario');
             setScenario(response.data);
-            const resp= await axios.get(`http://localhost:4000/vehicle`)
+            const resp= await axios.get(`/vehicle`)
             setVehicle(resp.data)
           } catch (error) {
             console.error(error);
@@ -27,7 +27,7 @@ export const DataContextProvider =({children})=>{
       },[reload]);
 
       return(
-        <DataContext.Provider value={{vehicle,scenario,setReload,reload,width,height}}>
+        <DataContext.Provider value={{vehicle,scenario,setReload,reload,width,height,setHeight,setWidth}}>
         {children}
         </DataContext.Provider>
       );

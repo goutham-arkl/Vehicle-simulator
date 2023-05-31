@@ -2,19 +2,17 @@ import React, { useEffect, useContext, useState, useRef } from "react";
 import { gsap } from "gsap";
 import Swal from 'sweetalert2'
 import { DataContext } from "../../Context/DataContext";
-import axios from "axios";
+import axios from "../../axios";
 import "./Home.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useNavigate } from "react-router-dom";
 
 
 
 const Home = () => {
   const [currentScenario, setCurrentScenario] = useState("");
   const [data, setData] = useState([]);
-  const { vehicle, scenario,reload,setReload } = useContext(DataContext);
-  const [edit,setEdit]=useState('')
+  const { vehicle, scenario,reload,setReload,width,setWidth,height,setHeight } = useContext(DataContext);
   const [modalData,setModalData] =useState({})
   const [speed ,setSpeed]=useState(modalData.speed)
   const [name ,setName]=useState(modalData.name)
@@ -36,7 +34,7 @@ const Home = () => {
     }
     const fetchVehicles = async () => {
       await axios
-        .get(`http://localhost:4000/scenario/${currentScenario}`)
+        .get(`/scenario/${currentScenario}`)
         .then((res) => {
           let scn = res.data;
           let ids = [];
@@ -56,19 +54,19 @@ const Home = () => {
 
   let chooseColor = (name) => {
     switch (name) {
-      case "Car":
+      case "CAR":
         return "blue";
 
-      case "Bus":
+      case "BUS":
         return "green";
 
-      case "Bike":
+      case "BIKE":
         return "gray";
 
-      case "Truck":
+      case "TRUCK":
         return "yellow";
 
-      case "Lorry":
+      case "LORRY":
         return "white";
     }
   };
@@ -80,7 +78,7 @@ const Home = () => {
       return;
     }
     let time
-    await axios.get(`http://localhost:4000/scenario/${currentScenario}`).then((res)=>{
+    await axios.get(`/scenario/${currentScenario}`).then((res)=>{
       time=Number(res.data.time)
       
     })
@@ -94,24 +92,24 @@ const Home = () => {
 
 
     if (item.direction === "towards") {
-      x = "1000%";
+      x = "1500%";
     } else if (item.direction === "backwards") {
-      x = "-1000%";
+      x = "-1500%";
     } else if (item.direction === "upwards") {
-      y = "-1000%";
+      y = "-1500%";
     } else if (item.direction === "downwards") {
-      y = "1000%";
+      y = "1500%";
     }
 
 
-    const animation = gsap.to(classname, { x: x, y: y, duration:item.speed > 10 ? 10 - item.speed/10 :10 - item.speed });
+    const animation = gsap.to(classname, { x: x, y: y, duration:item.speed > 10 ? 10 - item.speed/10 :10 - item.speed }).timeScale(0.5);
     tl.add(animation,0)
     
 
 
   })
   tl.duration(time)
-
+  setReload(!reload)
 };
 
 
@@ -127,14 +125,11 @@ const Home = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:4000/vehicle/${id}`).then((res)=>{
-          axios.get(`http://localhost:4000/scenario/${Number(currentScenario)}`).then((res)=>{
+        axios.delete(`/vehicle/${id}`).then((res)=>{
+          axios.get(`/scenario/${Number(currentScenario)}`).then((res)=>{
             let vehicles=res.data.vehicles
-            console.log(vehicles)
-            console.log(id)
             let del={vehicleId:id}
             const index = vehicles.findIndex((vehicle) => vehicle.vehicleId === id);
-            console.log(index)
             if(index > -1){
               vehicles.splice(index,1)
             }
@@ -144,7 +139,7 @@ const Home = () => {
               vehicles:vehicles
             }
             console.log(obj)
-             return axios.patch(`http://localhost:4000/scenario/${currentScenario}`,obj)
+             return axios.patch(`/scenario/${currentScenario}`,obj)
 
           })
           
@@ -167,7 +162,7 @@ const Home = () => {
   const handleopen=async(id)=>{
     
    try {
-    await axios.get(`http://localhost:4000/vehicle/${id}`).then((res)=>{
+    await axios.get(`/vehicle/${id}`).then((res)=>{
      setModalData(res.data)
      setOpenModal(true)
     })
@@ -201,7 +196,7 @@ const handleEdit = async() => {
       direction: direction
     };
       try {
-        const response = await axios.patch(`http://localhost:4000/vehicle/${id}`, updatedData);
+        const response = await axios.patch(`/vehicle/${id}`, updatedData);
         location.reload()
       } catch (error) {
         console.log(error);
@@ -209,6 +204,13 @@ const handleEdit = async() => {
 
   }
 };
+
+useEffect(() => {
+  const map = document.querySelector('.graph');
+  setWidth( map.offsetWidth);
+  setHeight( map.offsetHeight);
+
+}, [width,height]);
 
 
 
@@ -282,7 +284,7 @@ const handleEdit = async() => {
               key={item.id}
               className={`vehicles ${item.name}`}
               style={{
-                backgroundColor: `${chooseColor(item.name)}` || "white",
+                backgroundColor: `${chooseColor(item.name) ?chooseColor(item.name) : "gray" }`,
                 top: `${item.initialY}px`,
                 left: `${item.initialX}px`,
               }}

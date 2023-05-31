@@ -7,6 +7,9 @@ label{
   color:#000000;
   font-size: 15px;
 }
+h1{
+  color:white
+}
 
 .App{
   width: 100%;

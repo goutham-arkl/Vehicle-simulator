@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios'
 import './AddScenario.css'
 import { DataContext } from '../../Context/DataContext'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 const AddScenario = () => {
 
   const [name,setName]=useState('')
@@ -15,7 +16,10 @@ const AddScenario = () => {
       time:time,
       vehicles:[]
     }
-    axios.post(`http://localhost:4000/scenario`,obj).then((res)=>{
+    axios.post(`/scenario`,obj).then((res)=>{
+      Swal.fire(
+        'Successfully Added Scenario',
+      )
       setReload(!reload)
     }).catch(err=>{
       console.log(err)
@@ -24,7 +28,7 @@ const AddScenario = () => {
 
   return (
     <div className='add-scenario-container'>
-        <span className='heading'>Add Scenario</span>
+        <h1>Add Scenario</h1>
         <div className='values-div'>
            <div className='input-container'>
            <label>Scenario Name</label>
