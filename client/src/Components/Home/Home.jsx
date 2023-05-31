@@ -138,7 +138,6 @@ const Home = () => {
               time:res.data.time,
               vehicles:vehicles
             }
-            console.log(obj)
              return axios.patch(`/scenario/${currentScenario}`,obj)
 
           })
@@ -197,7 +196,7 @@ const handleEdit = async() => {
     };
       try {
         const response = await axios.patch(`/vehicle/${id}`, updatedData);
-        location.reload()
+        window.location.reload()
       } catch (error) {
         console.log(error);
       }

@@ -7,18 +7,39 @@
       "vehicles": [
         {
           "vehicleId": 1
+        },
+        {
+          "vehicleId": 2
         }
       ]
+    },
+    {
+      "name": "test 1",
+      "time": "7",
+      "vehicles": [
+        {
+          "vehicleId": 2
+        }
+      ],
+      "id": 2
     }
   ],
   "vehicle": [
     {
-      "name": "Car",
+      "name": "CAR",
       "speed": "1",
       "initialX": "123",
       "initialY": "21",
       "direction": "towards",
       "id": 1
+    },
+    {
+      "name": "LORRY",
+      "speed": "11",
+      "initialX": "12",
+      "initialY": "23",
+      "direction": "downwards",
+      "id": 2
     }
   ]
 }

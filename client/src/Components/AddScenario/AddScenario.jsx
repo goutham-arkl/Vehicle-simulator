@@ -44,7 +44,7 @@ const AddScenario = () => {
 
         <div className='button-div'>
         <button onClick={addScenario} style={{backgroundColor:"#6EC54B"}}>Add</button>
-        <button style={{backgroundColor:"#C5564B"}}>Reset</button>
+        <button onClick={()=>window.location.reload()} style={{backgroundColor:"#C5564B"}} >Reset</button>
         <Link to='/'><button style={{backgroundColor:"#4B74C5"}}>Go Back</button></Link>
 
         </div>
