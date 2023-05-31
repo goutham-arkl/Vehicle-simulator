@@ -285,7 +285,8 @@ const AllScenarios = () => {
       <label>Time</label>
       <input 
       onChange={(e)=>{
-        setTime(e.target.value),setChanged(true)
+        setTime(e.target.value)
+        setChanged(true)
       }} 
         value={time} 
         type={'number'} 
