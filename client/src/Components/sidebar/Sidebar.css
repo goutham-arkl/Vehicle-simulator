@@ -38,18 +38,22 @@
     border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
 }
 ul{
     list-style-type: none;
     width: 100%;
-    padding: 5px 30px;
     
 }
 li{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     margin-top: 20px;
+    color: #333;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
     cursor: pointer;
 }

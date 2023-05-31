@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import './AddScenario.css'
 import { DataContext } from '../../Context/DataContext'
+import { Link } from 'react-router-dom'
 const AddScenario = () => {
 
   const [name,setName]=useState('')
@@ -11,10 +12,11 @@ const AddScenario = () => {
   const addScenario=()=>{
     let obj={
       name:name,
-      time:time
+      time:time,
+      vehicles:[]
     }
     axios.post(`http://localhost:4000/scenario`,obj).then((res)=>{
-      console.log('data added')
+      setReload(!reload)
     }).catch(err=>{
       console.log(err)
     })
@@ -39,7 +41,7 @@ const AddScenario = () => {
         <div className='button-div'>
         <button onClick={addScenario} style={{backgroundColor:"#6EC54B"}}>Add</button>
         <button style={{backgroundColor:"#C5564B"}}>Reset</button>
-        <button style={{backgroundColor:"#4B74C5"}}>Go Back</button>
+        <Link to='/'><button style={{backgroundColor:"#4B74C5"}}>Go Back</button></Link>
 
         </div>
     </div>

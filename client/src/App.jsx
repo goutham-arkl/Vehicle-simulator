@@ -12,7 +12,7 @@ function App() {
     <div className="App">
     <div className='app-container'>
     <Sidebar />
-    
+
     <Routes>
     <Route path="/" element={<Content ren={Home} />} />
     <Route path="/addscenario" element={<Content ren={AddScenario} />} />

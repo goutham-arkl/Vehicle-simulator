@@ -5,3 +5,6 @@
 .scenario-select{
     min-width:400px ;
 }
+.err{
+    color: rgb(193, 54, 54);
+}

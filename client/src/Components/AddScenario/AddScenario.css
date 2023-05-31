@@ -1,7 +1,10 @@
 .add-scenario-container{
+    height: 80vh;
     padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -12,7 +15,7 @@
 .values-div{
 
     width: 100%;
-    height: 25vh;
+    height: 35vh;
     border-radius: 15px;
     display: flex;
     flex-wrap: wrap;

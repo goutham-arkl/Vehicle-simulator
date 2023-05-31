@@ -27,7 +27,7 @@ export const DataContextProvider =({children})=>{
       },[reload]);
 
       return(
-        <DataContext.Provider value={{vehicle,scenario,setReload,width,height}}>
+        <DataContext.Provider value={{vehicle,scenario,setReload,reload,width,height}}>
         {children}
         </DataContext.Provider>
       );
